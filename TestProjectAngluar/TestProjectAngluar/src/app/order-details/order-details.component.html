@@ -1,0 +1,21 @@
+<div *ngIf="orderDetails.length!=0">
+<table  class="table table-bordered">
+    <tr>
+        <th>Product</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+    </tr>
+    <tr *ngFor="let o of orderDetails">
+        <td><img [src]="o.product.productImg1" width="100px" height="100px"></td>
+        <td>{{o.product.productName}}</td>
+        <td>{{o.price|currency:'INR'}}</td>
+        <td>{{o.quantity}}</td>
+        <td>{{o.price*o.quantity|currency:'INR'}}</td>
+    </tr>
+</table>
+Order Address:{{orderDetails[0].order.orderAddress}}<br><br>
+Order Total:{{orderDetails[0].order.orderTotal|currency:'INR'}}
+
+</div>

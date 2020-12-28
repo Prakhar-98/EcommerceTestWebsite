@@ -1,0 +1,10 @@
+<div class="active-pink-4 mb-4">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search" [(ngModel)]='searchbar'>
+  </div>
+
+<div class="row">
+    <div class="col-md-4" *ngFor="let product of currentproductList">
+       
+        <app-product-card [productItem]="product" [inCart]='checkInCart(product)'></app-product-card>
+    </div>
+</div>

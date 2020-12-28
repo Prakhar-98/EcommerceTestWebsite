@@ -1,0 +1,55 @@
+﻿@model AddItemView
+@{
+    ViewData["Title"] = "AddItem";
+}
+
+<form asp-action="AddItem" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="ProductName" class="control-label"></label>
+        <input asp-for="ProductName" class="form-control" />
+        <span asp-validation-for="ProductName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductBrand" class="control-label"></label>
+        <input asp-for="ProductBrand" class="form-control" />
+        <span asp-validation-for="ProductBrand" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductDescription" class="control-label"></label>
+        <input asp-for="ProductDescription" class="form-control" />
+        <span asp-validation-for="ProductDescription" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductPrice" class="control-label"></label>
+        <input asp-for="ProductPrice" class="form-control" />
+        <span asp-validation-for="ProductPrice" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductStock" class="control-label"></label>
+        <input asp-for="ProductStock" class="form-control" />
+        <span asp-validation-for="ProductStock" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductImg1" class="control-label"></label>
+        <input asp-for="ProductImg1" class="form-control"  accept="image/*"/>
+        <span asp-validation-for="ProductImg1" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductImg2" class="control-label"></label>
+        <input asp-for="ProductImg2" class="form-control" accept="image/*" />
+        <span asp-validation-for="ProductImg2" class="text-danger" ></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductImg3" class="control-label"></label>
+        <input asp-for="ProductImg3" class="form-control" accept="image/*" />
+        <span asp-validation-for="ProductImg3" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductImg4" class="control-label"></label>
+        <input asp-for="ProductImg4" class="form-control"accept="image/*" />
+        <span asp-validation-for="ProductImg4" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add" class="btn btn-primary btn-block" />
+    </div>
+</form>

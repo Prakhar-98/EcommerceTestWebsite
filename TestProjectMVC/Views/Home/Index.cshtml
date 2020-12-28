@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TestProjectMVC.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+    <div class="row" >
+        @foreach (Product product in Model)
+        {
+            <div class="card mb-3 shadow-sm col-md-3 m-3">
+                <img class="bd-placeholder-img card-img-top" src="@product.ProductImg1"  width="100%"/>
+
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>₹@product.ProductPrice</strong>
+                    </p>
+                    <p class="card-text">@product.ProductName</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            
+                            <button type="button" class="btn btn-sm btn-outline-secondary product-btn" onclick="location.href = '@Url.Action("ProductDetails","Product",new { id=product.ProductId })'">View Details</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+
+        }
+    </div>
+</div>

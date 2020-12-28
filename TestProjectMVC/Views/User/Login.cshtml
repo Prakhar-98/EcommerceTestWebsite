@@ -1,0 +1,33 @@
+﻿@model TestProjectMVC.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+<div>
+    <div>
+        <form class="center" asp-action="Login" >
+            <h2 class="text-center">Log In</h2>
+            <div class="form-group">
+                <input class="form-control" placeholder="Email" asp-for="UserEmail" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input class="form-control" placeholder="Password" asp-for="UserPassword" />
+                <span asp-validation-for="UserPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Log In" class="btn btn-primary btn-block" />
+            </div>
+            <div><a class="forgot" href="/forgotPassword">Forgot your email or password?</a></div>
+            <div>
+                <a class="forgot" asp-area="" asp-controller="User" asp-action="SignUp">Dont have a account SignUp.</a>
+                <p class="text-danger">@ViewBag.message</p>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

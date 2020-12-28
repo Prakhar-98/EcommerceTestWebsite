@@ -1,0 +1,5 @@
+ <button class="btn btn-primary" (click)="initPay()" *ngIf='!inProccess'>Pay with Razorpay</button>
+ <button class="btn btn-primary" *ngIf='inProccess'>
+    <span class="spinner-border spinner-border-sm"></span>
+    Placing Order ...
+  </button>

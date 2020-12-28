@@ -1,0 +1,20 @@
+<h2> Product Status</h2>
+
+<table *ngIf="products.length!=0" class="table table-bordered">
+    <tr>
+        <th>Product</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Product Status</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let p of products">
+        <td><img [src]="p.productImg1" width="100px" height="100px"></td>
+        <td>{{p.productName}}</td>
+        <td>{{p.productPrice|currency:'INR'}}</td>
+        <td>
+            {{p.productStatus}}
+        </td>
+    </tr>
+</table>
+

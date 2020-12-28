@@ -1,0 +1,72 @@
+<table *ngIf="cartModels!=undefined && cartModels.length>0" class="table table-bordered table-striped" style="text-align: center;">
+    <tr>
+      <th>Product</th>
+      <th>Product Name
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>SubTotal</th>
+    </tr>
+    <tr *ngFor="let p of cartModels">
+      <td><img [src]="p.product.productImg1" width="50" height="50"></td>
+      <td>{{p.product.productName}}</td>
+      <td>{{p.product.productPrice}}</td>
+      <td style="text-align: center;">
+        {{p.quantity}}
+      </td>
+      <td>{{p.product.productPrice*p.quantity| currency:'INR'}}</td>
+    </tr>
+  </table>
+  <div>
+    <h5>Total:{{cartTotal | currency:'INR'}}</h5>
+  </div>
+  <form #addressForm='ngForm' *ngIf='cartModels!=undefined && cartModels.length!=0 && !validAddrress'>
+    <div class="form-group">
+      <label for="inputAddress">Address 1</label>
+      <input [(ngModel)]="address.address1" #a1='ngModel' name="first" class="form-control" placeholder="123 Main St." required>
+      <span class='text-danger' *ngIf="a1.errors && a1.touched">
+        <span *ngIf="a1.errors.required"> Address 1 is required </span>
+    </span></div>
+    <div class="form-group">
+      <label for="inputAddress2">Address 2</label>
+      <input [(ngModel)]="address.address2" #a2='ngModel' name="second" class="form-control" placeholder="Apartment, studio, or floor" required>
+      <span class='text-danger' *ngIf="a2.errors && a2.touched">
+        <span *ngIf="a2.errors.required"> Address 2 is required </span>
+    </span>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">City</label>
+        <input [(ngModel)]="address.city" #c='ngModel' name="city" class="form-control" required>
+        <span class='text-danger' *ngIf="c.errors && c.touched">
+          <span *ngIf="c.errors.required"> City is required </span>
+      </span>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">State</label>
+        <input [(ngModel)]="address.state" #s='ngModel' name="state" class="form-control" required>
+        <span class='text-danger' *ngIf="s.errors && s.touched">
+          <span *ngIf="s.errors.required"> State is required </span>
+      </span>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">Zip</label>
+        <input [(ngModel)]="address.zipCode" #z='ngModel' name="zip" class="form-control" type='number' required>
+        <span class='text-danger' *ngIf="z.errors && z.touched">
+          <span *ngIf="z.errors.required"> Zip Code is required </span>
+      </span>
+      </div>
+    </div>
+    <button class="btn btn-success" (click)='placeOrder(addressForm)' >Checkout</button>
+</form>
+
+<p class='text-danger'>{{message}}</p>
+<div *ngIf='validAddrress'>
+  <Address>Address Line 1:{{address.address1}}</Address>
+  <Address>Address Line 2:{{address.address2}}</Address>
+  <Address>City:{{address.city}}</Address>
+  <Address>State:{{address.state}}</Address>
+  <Address>Pin Code:{{address.zipCode}}</Address>
+
+<app-payments [amount]='cartTotal' [Address]='address' [order_id]='orderId'></app-payments>
+
+</div>

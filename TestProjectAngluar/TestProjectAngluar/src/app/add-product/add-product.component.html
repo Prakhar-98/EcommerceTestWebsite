@@ -1,0 +1,36 @@
+<h2>Add Product</h2>
+<br>
+
+<form class="col-sm-8" #add='ngForm'>
+    Product Name <input type="text" width="50" class="form-control" [(ngModel)]="product.productName" name="name" #n='ngModel' required>
+    <span class='text-danger' *ngIf="n.errors && n.touched">
+      <span *ngIf="n.errors.required"> Product Name is required </span>
+  </span>
+    <br>
+    Product Description <input type="text" size="50" class="form-control" [(ngModel)]="product.productDescription" name="Description" #d='ngModel' required>
+    <span class='text-danger' *ngIf="d.errors && d.touched">
+      <span *ngIf="d.errors.required"> Product Description is required </span>
+  </span>
+    <br>
+    Product Price <input type="text" size="50" class="form-control" [(ngModel)]="product.productPrice" name="Price" #p='ngModel' required> 
+    <br>
+    Product Stock <input type="text" size="50" class="form-control" [(ngModel)]="product.productStock" name="Stock" #s='ngModel' required>
+    <br>
+    Product Brand <input type="text" size="50" class="form-control" [(ngModel)]="product.productBrand" name="Brand" #b='ngModel' required>
+    <br>
+    Product Image 1 <input type="file"  class="form-control" (change)="onFileSelected($event,1)"  name="URL1" required accept="image/*">
+    <br>
+    Product Image 2 <input type="file" class="form-control" (change)="onFileSelected($event,2)" name="URL2" observeFiles accept="image/*">
+    <br>
+    Product Image 3 <input type="file" class="form-control" (change)="onFileSelected($event,3)" name="URL3" observeFiles accept="image/*">
+    <br>
+    Product Image 4 <input type="file"  class="form-control" (change)="onFileSelected($event,4)" name="URL4" observeFiles accept="image/*">
+    <br>
+    <p class="text-danger">{{message}}</p>
+    <button class="btn btn-success" style="text-align: center;" (click)="addProduct(add)" *ngIf='!inProcess'>Add</button>
+    <button class="btn btn-success " *ngIf='inProcess'>
+      <span class="spinner-border spinner-border-sm"></span>
+      Adding Product ...
+    </button>
+    </form>
+    <br/><br/>

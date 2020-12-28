@@ -1,0 +1,19 @@
+<div class="container-fluid row">
+    <div class="col-sm-3">
+        <div class="list-group " id="divuserdashboard">
+            <h2 class="list-group-item">Hello<h3>{{user.userName}}</h3></h2>
+        </div>
+        <div class="list-group">
+            <a routerLink="personaldetails" class="list-group-item">Personal Details</a>
+            <a routerLink="changePassword" class="list-group-item">Change Password</a>
+            <a routerLink="addproduct" class="list-group-item">Add Product</a>
+            <a routerLink="modifyList" class="list-group-item">Modify Product</a>
+            <a routerLink="productstatus" class="list-group-item">Product Status</a>
+            <a routerLink="orders" class="list-group-item">All Orders</a>  
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-7 overflow-auto" style="border: 1px solid rgba(0, 0,0, 0.1); height: 850px;">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div>
+    <div>
+        <form class="center" #loginForm='ngForm' >
+            <h2 class="text-center">Log In</h2>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" [(ngModel)]='user.userEmail' #e='ngModel' required/>
+                <span class='text-danger' *ngIf="e.errors && e.touched">
+                    <span *ngIf="e.errors.required"> Email is required </span>
+                </span>
+            </div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" [(ngModel)]='user.userPassword'#p='ngModel' required/>
+                <span class='text-danger' *ngIf="p.errors && p.touched">
+                    <span *ngIf="p.errors.required"> Password is required </span>
+                </span></div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" (click)="login(loginForm)" *ngIf='!inProcess'>Log In</button>
+                <button class="btn btn-primary btn-block" *ngIf='inProcess'>
+                    <span class="spinner-border spinner-border-sm"></span>
+                    Logging In..
+                  </button>
+            </div>
+            <div><a class="forgot" href="/forgotPassword">Forgot your email or password?</a></div>
+            <div><a class="forgot" href="/signUp">Dont have a account SignUp.</a>
+                <p class='text-danger'>{{message}}</p>
+            </div>
+        </form>
+
+    </div>
+</div>

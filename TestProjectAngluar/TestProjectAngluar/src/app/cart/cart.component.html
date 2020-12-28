@@ -1,0 +1,27 @@
+<table *ngIf="cartModels!=undefined && cartModels.length>0" class="table table-bordered table-striped" style="text-align: center;">
+    <tr>
+      <th>Product</th>
+      <th>Product Name
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>SubTotal</th>
+      <th>Remove</th>
+    </tr>
+    <tr *ngFor="let p of cartModels">
+      <td><img [src]="p.product.productImg1" width="50" height="50"></td>
+      <td>{{p.product.productName}}</td>
+      <td>{{p.product.productPrice}}</td>
+      <td style="text-align: center;">
+        <a (click)='decreseQuantity(p)' *ngIf='p.quantity >0' class="btn btn-default">-</a>
+        {{p.quantity}}
+        <a (click)='increaseQuntity(p)' *ngIf='p.quantity<p.product.productStock' class="btn btn-default">+</a>
+      </td>
+      <td>{{p.product.productPrice*p.quantity| currency:'INR'}}</td>
+      <td><button class="btn btn-default" (click)="removeFromCart(p)">Remove from cart</button></td>
+    </tr>
+  </table>
+  <div>
+    <h5>Total:{{cartTotal | currency:'INR'}}</h5>
+  </div>
+  <h1 *ngIf="cartModels==undefined || cartModels.length==0">No Items in Cart</h1>
+  <a (click)='checkout()' class="btn btn-success center">Proceed to Chechout</a>

@@ -1,0 +1,25 @@
+<h2>Modify Product</h2>
+<br>
+
+<form class="col-sm-8" #add='ngForm'>
+  Product Name <input type="text" width="50" class="form-control" [(ngModel)]="product.productName" name="name" #n='ngModel' required>
+  <span class='text-danger' *ngIf="n.errors && n.touched">
+    <span *ngIf="n.errors.required"> Product Name is required </span>
+</span>
+  <br>
+  Product Description <input type="text" size="50" class="form-control" [(ngModel)]="product.productDescription" name="Description" #d='ngModel' required>
+  <span class='text-danger' *ngIf="d.errors && d.touched">
+    <span *ngIf="d.errors.required"> Product Description is required </span>
+</span>
+  <br>
+  Product Price <input type="text" size="50" class="form-control" [(ngModel)]="product.productPrice" name="Price" #p='ngModel' required min="0"> 
+  <br>
+  Product Stock <input type="text" size="50" class="form-control" [(ngModel)]="product.productStock" name="Stock" #s='ngModel' required>
+  <br>
+  Product Brand <input type="text" size="50" class="form-control" [(ngModel)]="product.productBrand" name="Brand" #b='ngModel' required>
+  <br>
+  <p class="text-danger">{{message}}</p>
+  <button class="btn btn-success" style="text-align: center;" (click)="modifyProduct(add)">Modify</button> &nbsp;&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-primary" style="text-align: center;" (click)="goback()">Go Back</button>
+  </form>
+

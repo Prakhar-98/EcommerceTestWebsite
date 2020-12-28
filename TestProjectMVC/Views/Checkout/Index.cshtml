@@ -1,0 +1,63 @@
+﻿@model CheckOutView
+@{
+    ViewData["Title"] = "CheckOut";
+}
+<table class="table table-bordered table-striped" style="text-align: center;">
+    <tr>
+        <th style="text-align: center;">Product</th>
+        <th style="text-align: center;">Product Name
+        <th style="text-align: center;">Price</th>
+        <th style="text-align: center;">Quantity</th>
+        <th style="text-align: center;">SubTotal</th>
+    </tr>
+    @for (int i = 0; i < Model.Carts.Count(); i++)
+    {
+        <tr>
+            <td><img src="@Model.Carts[i].Product.ProductImg1" width="50" height="50"></td>
+
+            <td>@Model.Carts[i].Product.ProductName</td>
+            <td>₹@Model.Carts[i].Product.ProductPrice</td>
+            <td style="text-align: center;">
+                <span id='q @i'>@Model.Carts[i].Quantity</span>
+            </td>
+
+            <td>₹<span id='t @i'>@(Model.Carts[i].Product.ProductPrice* Model.Carts[i].Quantity)</span></td>
+        </tr>
+    }
+</table>
+<div>
+    <h4>Total:₹@Model.Carts.Select(c => c.Product.ProductPrice * c.Quantity).Sum()</h4>
+</div>
+<form asp-action="Index">
+
+    <div class="form-group">
+        <label asp-for="Address.Address1" class="control-label"></label>
+        <input asp-for="Address.Address1" class="form-control" />
+        <span asp-validation-for="Address.Address1" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address.Address2" class="control-label"></label>
+        <input asp-for="Address.Address2" class="form-control" />
+        <span asp-validation-for="Address.Address2" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Address.City" class="control-label"></label>
+            <input asp-for="Address.City" class="form-control" />
+            <span asp-validation-for="Address.City" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Address.State" class="control-label"></label>
+            <input asp-for="Address.State" class="form-control" />
+            <span asp-validation-for="Address.State" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="Address.ZipCode" class="control-label"></label>
+            <input asp-for="Address.ZipCode" class="form-control" />
+            <span asp-validation-for="Address.ZipCode" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row" style="width:300px;text-align:center">
+        <input type="submit" value="Place Order" class="btn btn-primary btn-block"/>
+    </div>
+</form>

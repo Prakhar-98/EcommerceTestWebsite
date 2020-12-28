@@ -1,0 +1,41 @@
+<br><br><br>
+<div class="card filters">
+
+    <div class="card header">
+        <strong style="text-align: center;">
+            Filters
+        </strong> </div>
+    <div class="card-body">
+            <div class="form-group">
+                <label for="from">From</label>
+                <input type="number" id="from" class="form-control"[(ngModel)]="minimumPrice">
+            </div>
+            <div class="form-group">
+                <label for="to">To</label>
+                <input type="number" id="to" class="form-control"[(ngModel)]='maximumPrice'>
+            </div>
+
+            <button class="btn btn-primary btn-block btn-sm" (click)='filterPrice()'>Filter By Price</button>
+    </div>
+</div>
+<br><br><br>
+<div class="card filters">
+
+    <div class="card header">
+        <strong style="text-align: center;">
+            Sort
+        </strong> </div>
+    <div class="card-body">
+            <div class="form-group">
+                <label for="from" style="text-align: center;">Sort By</label>
+                <select class="form-control" [(ngModel)]='sortValue'>
+                    <option value="0">None</option>
+                    <option value="1">Price Asc.</option>
+                    <option value="2">Price Desc.</option>
+                    <option value="3">Name Asc.</option>
+                    <option value="4">Name Desc.</option>
+                  </select>
+            </div>
+            <button class="btn btn-primary btn-block btn-sm" (click)='sort()'>Sort</button>
+    </div>
+</div>

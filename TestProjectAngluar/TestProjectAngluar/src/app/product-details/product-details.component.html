@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-1">
+            <img [src]="product.productImg1" 
+                 [alt]="product.productName"
+                 class="img-fluid"
+                 (click)="changeImg(1)"/>
+            <img [src]="product.productImg2" 
+            [alt]="product.productName"
+                 class="img-fluid" (click)="changeImg(2)"/>
+            <img [src]="product.productImg3" 
+            [alt]="product.productName"
+                 class="img-fluid" (click)="changeImg(3)" />
+            <img [src]="product.productImg4" 
+            [alt]="product.productName"
+                 class="img-fluid" (click)="changeImg(4)" />
+        </div>
+        <div class="col-md-5">
+            <img [src]="currentimg"
+            [alt]="product.productName"
+                 id="Img"
+                 class="img-fluid zoom" />
+        </div>
+        <div class="col-6">
+            <div class="card" style="height: 100%">
+                <h5 class="card-header">{{product.productName}}</h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{product.productPrice| currency:'INR'}}</h5>
+                    <p class="card-text">
+                        {{product.productDescription}}
+                    </p>
+                    
+                    <div *ngIf="inSession!=undefined && inSession">
+                        <button class="btn btn-primary" *ngIf='inProcessing'>
+                            <span class="spinner-border spinner-border-sm"></span>
+                            Processing
+                          </button>
+                        <a class="btn btn-primary" *ngIf='!inCart && !inProcessing' (click)='addToCart()'>Add to Cart</a>
+                        <a class="btn btn-primary" *ngIf='inCart  && !inProcessing' (click)='removeFromCart()'>Remove fom Cart</a>                       
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

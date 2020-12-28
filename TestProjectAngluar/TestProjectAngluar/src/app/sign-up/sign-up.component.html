@@ -1,0 +1,41 @@
+<form class="center" #signUp='ngForm' >
+    <h2 class="centre">Register</h2>
+    <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Name" required minlength=4 [(ngModel)]="user.userName" #un="ngModel" />
+        <span class='text-danger' *ngIf="un.errors && un.touched" >
+            <span *ngIf="un.errors.required"> Username is required </span>
+            <span *ngIf="un.errors.minlength"> Username should be min 4 characters</span>
+        </span>
+    </div>
+    
+    <div class="form-group"><input class="form-control" type="text" name="Mobile" placeholder="Mobile"  [(ngModel)]="user.userPhone" required minlength=10 #m="ngModel" />
+        <span class='text-danger' *ngIf="m.errors && m.touched">
+            <span *ngIf="m.errors.required"> Mobile No. is required </span>
+            <span *ngIf="m.errors.minlength"> Mobile No. should be min 10 characters</span>
+        </span>
+    </div>
+    <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" [(ngModel)]="user.userEmail" required #e='ngModel'/>
+        <span class='text-danger' *ngIf="e.errors && e.touched">
+            <span *ngIf="e.errors.required"> Email is required </span>
+        </span>
+    </div>
+    <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required minlength=8 [(ngModel)]="user.userPassword" #ps="ngModel"/>
+        <span class='text-danger' *ngIf="ps.errors && ps.touched">
+            <span *ngIf="ps.errors.required"> Password is required </span>
+            <span *ngIf="ps.errors.minlength"> Password should be min 8 characters</span>
+        </span>
+    </div>
+    <div class="form-group"><input class="form-control" type="password" name="cpassword" placeholder="Confirm Password"  required minlength=8 [(ngModel)]='cpassword' #cps="ngModel"/>
+        <span class='text-danger' *ngIf="cps.errors && cps.touched">
+            <span *ngIf="cps.errors.required"> Confirm Password is required </span>
+            <span *ngIf="cps.errors.minlength"> Confirm Password should be min 8 characters</span>
+        </span>
+    </div>
+    <div class="form-group"><button class="btn btn-success btn-block" type="submit" (click)="registerUser(signUp)" *ngIf='!inProcess'> Sign Up</button>
+        <button class="btn btn-success btn-block" *ngIf='inProcess'>
+            <span class="spinner-border spinner-border-sm"></span>
+            Signing Up ...
+          </button>
+    </div>
+    <div><a class="forgot" href="/login">Already have a accont Login.</a>
+    <p  class='text-danger'>{{message}}</p>
+    </div></form>

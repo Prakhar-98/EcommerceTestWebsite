@@ -1,0 +1,19 @@
+<br/><br/>
+<h2 style="text-align: center;">Personal Details</h2>
+<br>
+
+<div class="col-sm-8" style="margin: auto;">
+    Name <input type="text" width="50" class="form-control"[(ngModel)]='user.userName'>
+    <br>
+    Email <input type="text" size="50" class="form-control"[(ngModel)]='user.userEmail'> 
+    <br>
+    Mobile <input type="text" size="50" class="form-control"[(ngModel)]='user.userPhone'> 
+    <br>
+    <button class="btn btn-success " *ngIf='inProcess'>
+        <span class="spinner-border spinner-border-sm"></span>
+        Updating ...
+      </button>
+    <button class="btn btn-success" style="text-align: center;" (click)='update()' *ngIf='!inProcess'>Update</button>
+    <br>
+    {{message}}
+</div>
