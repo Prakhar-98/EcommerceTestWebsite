@@ -21,6 +21,8 @@ It uses the following technologies
 
 8..Net 5.0 & 3.1 **
 
+9.RazorPay
+
  *** MVC version is deprecated and no longer uptodate with rest of the project 
 
 ** **At the time of making this project azure fuctions do not support dotnet 5**
